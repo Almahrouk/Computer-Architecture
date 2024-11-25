@@ -1,0 +1,9 @@
+vendor_name = ModelSim
+source_file = 1, E:/de1000/de1000/de1000.bdf
+source_file = 1, E:/de1000/de1000/Waveform.vwf
+source_file = 1, E:/de1000/de1000/db/de1000.cbx.xml
+design_name = de1000
+instance = comp, \f~output , f~output, de1000, 1
+instance = comp, \a~input , a~input, de1000, 1
+instance = comp, \b~input , b~input, de1000, 1
+instance = comp, \~QUARTUS_CREATED_GND~I , ~QUARTUS_CREATED_GND~I, de1000, 1

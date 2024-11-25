@@ -1,0 +1,15 @@
+Analysis & Synthesis Status : Successful - Fri Nov 06 13:08:30 2020
+Quartus II Version : 7.2 Build 151 09/26/2007 SJ Full Version
+Revision Name : jk_ff
+Top-level Entity Name : JK_FF
+Family : Stratix II
+Logic utilization : N/A
+    Combinational ALUTs : 1
+    Dedicated logic registers : 1
+Total registers : 1
+Total pins : 6
+Total virtual pins : 0
+Total block memory bits : 0
+DSP block 9-bit elements : 0
+Total PLLs : 0
+Total DLLs : 0

@@ -1,0 +1,15 @@
+Analysis & Synthesis Status : Successful - Fri Nov 27 14:46:15 2020
+Quartus II 64-Bit Version : 7.2 Build 151 09/26/2007 SJ Full Version
+Revision Name : AAA
+Top-level Entity Name : AAA
+Family : Stratix II
+Logic utilization : N/A
+    Combinational ALUTs : 6
+    Dedicated logic registers : 4
+Total registers : 4
+Total pins : 5
+Total virtual pins : 0
+Total block memory bits : 0
+DSP block 9-bit elements : 0
+Total PLLs : 0
+Total DLLs : 0

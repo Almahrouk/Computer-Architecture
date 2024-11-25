@@ -1,0 +1,413 @@
+Classic Timing Analyzer report for SRAM
+Fri Nov 06 16:45:41 2020
+Quartus II Version 7.2 Build 151 09/26/2007 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Clock Setup: 'Clock'
+  6. tsu
+  7. tco
+  8. th
+  9. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2007 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                            ;
++------------------------------+-------+---------------+------------------------------------------------+------------------+------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                                    ; From             ; To               ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+------------------------------------------------+------------------+------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 4.654 ns                                       ; Write_Addr[0]    ; tmp_ram~46       ; --         ; Clock    ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 7.087 ns                                       ; Data_out[0]~reg0 ; Data_out[0]      ; Clock      ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -2.108 ns                                      ; Data_in[3]       ; tmp_ram~46       ; --         ; Clock    ; 0            ;
+; Clock Setup: 'Clock'         ; N/A   ; None          ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~38       ; Data_out[3]~reg0 ; Clock      ; Clock    ; 0            ;
+; Total number of failed paths ;       ;               ;                                                ;                  ;                  ;            ;          ; 0            ;
++------------------------------+-------+---------------+------------------------------------------------+------------------+------------------+------------+----------+--------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                      ;
++----------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                         ; Setting            ; From ; To ; Entity Name ;
++----------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                    ; EP2S15F484C3       ;      ;    ;             ;
+; Timing Models                                                  ; Final              ;      ;    ;             ;
+; Default hold multicycle                                        ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                      ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                         ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                 ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                               ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                          ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                        ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                               ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                           ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                  ; Off                ;      ;    ;             ;
+; Number of source nodes to report per destination node          ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                          ; 10                 ;      ;    ;             ;
+; Number of paths to report                                      ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                   ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                         ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                     ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                   ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis ; Off                ;      ;    ;             ;
++----------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock           ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'Clock'                                                                                                                                                                               ;
++-------+------------------------------------------------+------------+------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From       ; To               ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+------------+------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~38 ; Data_out[3]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.814 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~20 ; Data_out[2]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.759 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~46 ; Data_out[3]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.756 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~32 ; Data_out[0]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.676 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~36 ; Data_out[2]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.673 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~22 ; Data_out[3]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.671 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~34 ; Data_out[1]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.669 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~18 ; Data_out[1]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.668 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~16 ; Data_out[0]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.665 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~42 ; Data_out[1]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.655 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~26 ; Data_out[1]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.607 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~44 ; Data_out[2]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.606 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~40 ; Data_out[0]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.601 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~30 ; Data_out[3]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.499 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~28 ; Data_out[2]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.497 ns                ;
+; N/A   ; Restricted to 500.00 MHz ( period = 2.000 ns ) ; tmp_ram~24 ; Data_out[0]~reg0 ; Clock      ; Clock    ; None                        ; None                      ; 0.496 ns                ;
++-------+------------------------------------------------+------------+------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++---------------------------------------------------------------------------------+
+; tsu                                                                             ;
++-------+--------------+------------+---------------+------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From          ; To               ; To Clock ;
++-------+--------------+------------+---------------+------------------+----------+
+; N/A   ; None         ; 4.654 ns   ; Write_Addr[0] ; tmp_ram~40       ; Clock    ;
+; N/A   ; None         ; 4.654 ns   ; Write_Addr[0] ; tmp_ram~42       ; Clock    ;
+; N/A   ; None         ; 4.654 ns   ; Write_Addr[0] ; tmp_ram~44       ; Clock    ;
+; N/A   ; None         ; 4.654 ns   ; Write_Addr[0] ; tmp_ram~46       ; Clock    ;
+; N/A   ; None         ; 4.568 ns   ; Write_Addr[0] ; tmp_ram~16       ; Clock    ;
+; N/A   ; None         ; 4.568 ns   ; Write_Addr[0] ; tmp_ram~18       ; Clock    ;
+; N/A   ; None         ; 4.568 ns   ; Write_Addr[0] ; tmp_ram~20       ; Clock    ;
+; N/A   ; None         ; 4.568 ns   ; Write_Addr[0] ; tmp_ram~22       ; Clock    ;
+; N/A   ; None         ; 4.560 ns   ; Write_Addr[0] ; tmp_ram~32       ; Clock    ;
+; N/A   ; None         ; 4.560 ns   ; Write_Addr[0] ; tmp_ram~34       ; Clock    ;
+; N/A   ; None         ; 4.560 ns   ; Write_Addr[0] ; tmp_ram~36       ; Clock    ;
+; N/A   ; None         ; 4.560 ns   ; Write_Addr[0] ; tmp_ram~38       ; Clock    ;
+; N/A   ; None         ; 4.307 ns   ; Write_Addr[0] ; tmp_ram~24       ; Clock    ;
+; N/A   ; None         ; 4.307 ns   ; Write_Addr[0] ; tmp_ram~26       ; Clock    ;
+; N/A   ; None         ; 4.307 ns   ; Write_Addr[0] ; tmp_ram~28       ; Clock    ;
+; N/A   ; None         ; 4.307 ns   ; Write_Addr[0] ; tmp_ram~30       ; Clock    ;
+; N/A   ; None         ; 4.167 ns   ; Write_Addr[1] ; tmp_ram~24       ; Clock    ;
+; N/A   ; None         ; 4.167 ns   ; Write_Addr[1] ; tmp_ram~26       ; Clock    ;
+; N/A   ; None         ; 4.167 ns   ; Write_Addr[1] ; tmp_ram~28       ; Clock    ;
+; N/A   ; None         ; 4.167 ns   ; Write_Addr[1] ; tmp_ram~30       ; Clock    ;
+; N/A   ; None         ; 4.166 ns   ; Write_Addr[1] ; tmp_ram~40       ; Clock    ;
+; N/A   ; None         ; 4.166 ns   ; Write_Addr[1] ; tmp_ram~42       ; Clock    ;
+; N/A   ; None         ; 4.166 ns   ; Write_Addr[1] ; tmp_ram~44       ; Clock    ;
+; N/A   ; None         ; 4.166 ns   ; Write_Addr[1] ; tmp_ram~46       ; Clock    ;
+; N/A   ; None         ; 4.079 ns   ; Write_Addr[1] ; tmp_ram~16       ; Clock    ;
+; N/A   ; None         ; 4.079 ns   ; Write_Addr[1] ; tmp_ram~18       ; Clock    ;
+; N/A   ; None         ; 4.079 ns   ; Write_Addr[1] ; tmp_ram~20       ; Clock    ;
+; N/A   ; None         ; 4.079 ns   ; Write_Addr[1] ; tmp_ram~22       ; Clock    ;
+; N/A   ; None         ; 4.071 ns   ; Write_Addr[1] ; tmp_ram~32       ; Clock    ;
+; N/A   ; None         ; 4.071 ns   ; Write_Addr[1] ; tmp_ram~34       ; Clock    ;
+; N/A   ; None         ; 4.071 ns   ; Write_Addr[1] ; tmp_ram~36       ; Clock    ;
+; N/A   ; None         ; 4.071 ns   ; Write_Addr[1] ; tmp_ram~38       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~40       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~24       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~26       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~42       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~44       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~28       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~46       ; Clock    ;
+; N/A   ; None         ; 3.489 ns   ; Enable        ; tmp_ram~30       ; Clock    ;
+; N/A   ; None         ; 3.466 ns   ; Write         ; tmp_ram~24       ; Clock    ;
+; N/A   ; None         ; 3.466 ns   ; Write         ; tmp_ram~26       ; Clock    ;
+; N/A   ; None         ; 3.466 ns   ; Write         ; tmp_ram~28       ; Clock    ;
+; N/A   ; None         ; 3.466 ns   ; Write         ; tmp_ram~30       ; Clock    ;
+; N/A   ; None         ; 3.464 ns   ; Write         ; tmp_ram~40       ; Clock    ;
+; N/A   ; None         ; 3.464 ns   ; Write         ; tmp_ram~42       ; Clock    ;
+; N/A   ; None         ; 3.464 ns   ; Write         ; tmp_ram~44       ; Clock    ;
+; N/A   ; None         ; 3.464 ns   ; Write         ; tmp_ram~46       ; Clock    ;
+; N/A   ; None         ; 3.409 ns   ; Write         ; tmp_ram~16       ; Clock    ;
+; N/A   ; None         ; 3.409 ns   ; Write         ; tmp_ram~18       ; Clock    ;
+; N/A   ; None         ; 3.409 ns   ; Write         ; tmp_ram~20       ; Clock    ;
+; N/A   ; None         ; 3.409 ns   ; Write         ; tmp_ram~22       ; Clock    ;
+; N/A   ; None         ; 3.403 ns   ; Enable        ; tmp_ram~16       ; Clock    ;
+; N/A   ; None         ; 3.403 ns   ; Enable        ; tmp_ram~18       ; Clock    ;
+; N/A   ; None         ; 3.403 ns   ; Enable        ; tmp_ram~20       ; Clock    ;
+; N/A   ; None         ; 3.403 ns   ; Enable        ; tmp_ram~22       ; Clock    ;
+; N/A   ; None         ; 3.395 ns   ; Enable        ; tmp_ram~32       ; Clock    ;
+; N/A   ; None         ; 3.395 ns   ; Enable        ; tmp_ram~34       ; Clock    ;
+; N/A   ; None         ; 3.395 ns   ; Enable        ; tmp_ram~36       ; Clock    ;
+; N/A   ; None         ; 3.395 ns   ; Enable        ; tmp_ram~38       ; Clock    ;
+; N/A   ; None         ; 3.370 ns   ; Write         ; tmp_ram~32       ; Clock    ;
+; N/A   ; None         ; 3.370 ns   ; Write         ; tmp_ram~34       ; Clock    ;
+; N/A   ; None         ; 3.370 ns   ; Write         ; tmp_ram~36       ; Clock    ;
+; N/A   ; None         ; 3.370 ns   ; Write         ; tmp_ram~38       ; Clock    ;
+; N/A   ; None         ; 3.104 ns   ; Enable        ; Data_out[0]~reg0 ; Clock    ;
+; N/A   ; None         ; 3.104 ns   ; Enable        ; Data_out[1]~reg0 ; Clock    ;
+; N/A   ; None         ; 3.104 ns   ; Enable        ; Data_out[2]~reg0 ; Clock    ;
+; N/A   ; None         ; 3.104 ns   ; Enable        ; Data_out[3]~reg0 ; Clock    ;
+; N/A   ; None         ; 3.073 ns   ; Enable        ; Data_out[0]~en   ; Clock    ;
+; N/A   ; None         ; 2.957 ns   ; Data_in[1]    ; tmp_ram~18       ; Clock    ;
+; N/A   ; None         ; 2.957 ns   ; Data_in[1]    ; tmp_ram~34       ; Clock    ;
+; N/A   ; None         ; 2.945 ns   ; Read_Addr[0]  ; Data_out[1]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.945 ns   ; Read_Addr[0]  ; Data_out[2]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.943 ns   ; Read_Addr[0]  ; Data_out[0]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.943 ns   ; Read_Addr[0]  ; Data_out[3]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.786 ns   ; Read_Addr[1]  ; Data_out[1]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.786 ns   ; Read_Addr[1]  ; Data_out[2]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.785 ns   ; Read_Addr[1]  ; Data_out[3]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.784 ns   ; Read_Addr[1]  ; Data_out[0]~reg0 ; Clock    ;
+; N/A   ; None         ; 2.762 ns   ; Data_in[2]    ; tmp_ram~36       ; Clock    ;
+; N/A   ; None         ; 2.758 ns   ; Data_in[2]    ; tmp_ram~20       ; Clock    ;
+; N/A   ; None         ; 2.701 ns   ; Data_in[3]    ; tmp_ram~22       ; Clock    ;
+; N/A   ; None         ; 2.701 ns   ; Data_in[3]    ; tmp_ram~38       ; Clock    ;
+; N/A   ; None         ; 2.701 ns   ; Data_in[0]    ; tmp_ram~16       ; Clock    ;
+; N/A   ; None         ; 2.698 ns   ; Data_in[0]    ; tmp_ram~32       ; Clock    ;
+; N/A   ; None         ; 2.626 ns   ; Data_in[2]    ; tmp_ram~44       ; Clock    ;
+; N/A   ; None         ; 2.616 ns   ; Data_in[2]    ; tmp_ram~28       ; Clock    ;
+; N/A   ; None         ; 2.512 ns   ; Read          ; Data_out[0]~en   ; Clock    ;
+; N/A   ; None         ; 2.507 ns   ; Data_in[1]    ; tmp_ram~42       ; Clock    ;
+; N/A   ; None         ; 2.505 ns   ; Data_in[1]    ; tmp_ram~26       ; Clock    ;
+; N/A   ; None         ; 2.394 ns   ; Data_in[0]    ; tmp_ram~24       ; Clock    ;
+; N/A   ; None         ; 2.391 ns   ; Data_in[0]    ; tmp_ram~40       ; Clock    ;
+; N/A   ; None         ; 2.350 ns   ; Data_in[3]    ; tmp_ram~30       ; Clock    ;
+; N/A   ; None         ; 2.347 ns   ; Data_in[3]    ; tmp_ram~46       ; Clock    ;
++-------+--------------+------------+---------------+------------------+----------+
+
+
++---------------------------------------------------------------------------------+
+; tco                                                                             ;
++-------+--------------+------------+------------------+-------------+------------+
+; Slack ; Required tco ; Actual tco ; From             ; To          ; From Clock ;
++-------+--------------+------------+------------------+-------------+------------+
+; N/A   ; None         ; 7.087 ns   ; Data_out[0]~reg0 ; Data_out[0] ; Clock      ;
+; N/A   ; None         ; 6.562 ns   ; Data_out[0]~en   ; Data_out[0] ; Clock      ;
+; N/A   ; None         ; 5.099 ns   ; Data_out[1]~reg0 ; Data_out[1] ; Clock      ;
+; N/A   ; None         ; 5.097 ns   ; Data_out[2]~reg0 ; Data_out[2] ; Clock      ;
+; N/A   ; None         ; 5.048 ns   ; Data_out[3]~reg0 ; Data_out[3] ; Clock      ;
+; N/A   ; None         ; 4.944 ns   ; Data_out[0]~en   ; Data_out[2] ; Clock      ;
+; N/A   ; None         ; 4.944 ns   ; Data_out[0]~en   ; Data_out[1] ; Clock      ;
+; N/A   ; None         ; 4.937 ns   ; Data_out[0]~en   ; Data_out[3] ; Clock      ;
++-------+--------------+------------+------------------+-------------+------------+
+
+
++---------------------------------------------------------------------------------------+
+; th                                                                                    ;
++---------------+-------------+-----------+---------------+------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From          ; To               ; To Clock ;
++---------------+-------------+-----------+---------------+------------------+----------+
+; N/A           ; None        ; -2.108 ns ; Data_in[3]    ; tmp_ram~46       ; Clock    ;
+; N/A           ; None        ; -2.111 ns ; Data_in[3]    ; tmp_ram~30       ; Clock    ;
+; N/A           ; None        ; -2.152 ns ; Data_in[0]    ; tmp_ram~40       ; Clock    ;
+; N/A           ; None        ; -2.155 ns ; Data_in[0]    ; tmp_ram~24       ; Clock    ;
+; N/A           ; None        ; -2.266 ns ; Data_in[1]    ; tmp_ram~26       ; Clock    ;
+; N/A           ; None        ; -2.268 ns ; Data_in[1]    ; tmp_ram~42       ; Clock    ;
+; N/A           ; None        ; -2.273 ns ; Read          ; Data_out[0]~en   ; Clock    ;
+; N/A           ; None        ; -2.377 ns ; Data_in[2]    ; tmp_ram~28       ; Clock    ;
+; N/A           ; None        ; -2.387 ns ; Data_in[2]    ; tmp_ram~44       ; Clock    ;
+; N/A           ; None        ; -2.459 ns ; Data_in[0]    ; tmp_ram~32       ; Clock    ;
+; N/A           ; None        ; -2.462 ns ; Data_in[3]    ; tmp_ram~22       ; Clock    ;
+; N/A           ; None        ; -2.462 ns ; Data_in[3]    ; tmp_ram~38       ; Clock    ;
+; N/A           ; None        ; -2.462 ns ; Data_in[0]    ; tmp_ram~16       ; Clock    ;
+; N/A           ; None        ; -2.519 ns ; Data_in[2]    ; tmp_ram~20       ; Clock    ;
+; N/A           ; None        ; -2.523 ns ; Data_in[2]    ; tmp_ram~36       ; Clock    ;
+; N/A           ; None        ; -2.545 ns ; Read_Addr[1]  ; Data_out[0]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.546 ns ; Read_Addr[1]  ; Data_out[3]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.547 ns ; Read_Addr[1]  ; Data_out[1]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.547 ns ; Read_Addr[1]  ; Data_out[2]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.704 ns ; Read_Addr[0]  ; Data_out[0]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.704 ns ; Read_Addr[0]  ; Data_out[3]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.706 ns ; Read_Addr[0]  ; Data_out[1]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.706 ns ; Read_Addr[0]  ; Data_out[2]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.718 ns ; Data_in[1]    ; tmp_ram~18       ; Clock    ;
+; N/A           ; None        ; -2.718 ns ; Data_in[1]    ; tmp_ram~34       ; Clock    ;
+; N/A           ; None        ; -2.834 ns ; Enable        ; Data_out[0]~en   ; Clock    ;
+; N/A           ; None        ; -2.865 ns ; Enable        ; Data_out[0]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.865 ns ; Enable        ; Data_out[1]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.865 ns ; Enable        ; Data_out[2]~reg0 ; Clock    ;
+; N/A           ; None        ; -2.865 ns ; Enable        ; Data_out[3]~reg0 ; Clock    ;
+; N/A           ; None        ; -3.131 ns ; Write         ; tmp_ram~32       ; Clock    ;
+; N/A           ; None        ; -3.131 ns ; Write         ; tmp_ram~34       ; Clock    ;
+; N/A           ; None        ; -3.131 ns ; Write         ; tmp_ram~36       ; Clock    ;
+; N/A           ; None        ; -3.131 ns ; Write         ; tmp_ram~38       ; Clock    ;
+; N/A           ; None        ; -3.156 ns ; Enable        ; tmp_ram~32       ; Clock    ;
+; N/A           ; None        ; -3.156 ns ; Enable        ; tmp_ram~34       ; Clock    ;
+; N/A           ; None        ; -3.156 ns ; Enable        ; tmp_ram~36       ; Clock    ;
+; N/A           ; None        ; -3.156 ns ; Enable        ; tmp_ram~38       ; Clock    ;
+; N/A           ; None        ; -3.164 ns ; Enable        ; tmp_ram~16       ; Clock    ;
+; N/A           ; None        ; -3.164 ns ; Enable        ; tmp_ram~18       ; Clock    ;
+; N/A           ; None        ; -3.164 ns ; Enable        ; tmp_ram~20       ; Clock    ;
+; N/A           ; None        ; -3.164 ns ; Enable        ; tmp_ram~22       ; Clock    ;
+; N/A           ; None        ; -3.170 ns ; Write         ; tmp_ram~16       ; Clock    ;
+; N/A           ; None        ; -3.170 ns ; Write         ; tmp_ram~18       ; Clock    ;
+; N/A           ; None        ; -3.170 ns ; Write         ; tmp_ram~20       ; Clock    ;
+; N/A           ; None        ; -3.170 ns ; Write         ; tmp_ram~22       ; Clock    ;
+; N/A           ; None        ; -3.225 ns ; Write         ; tmp_ram~40       ; Clock    ;
+; N/A           ; None        ; -3.225 ns ; Write         ; tmp_ram~42       ; Clock    ;
+; N/A           ; None        ; -3.225 ns ; Write         ; tmp_ram~44       ; Clock    ;
+; N/A           ; None        ; -3.225 ns ; Write         ; tmp_ram~46       ; Clock    ;
+; N/A           ; None        ; -3.227 ns ; Write         ; tmp_ram~24       ; Clock    ;
+; N/A           ; None        ; -3.227 ns ; Write         ; tmp_ram~26       ; Clock    ;
+; N/A           ; None        ; -3.227 ns ; Write         ; tmp_ram~28       ; Clock    ;
+; N/A           ; None        ; -3.227 ns ; Write         ; tmp_ram~30       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~40       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~24       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~26       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~42       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~44       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~28       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~46       ; Clock    ;
+; N/A           ; None        ; -3.250 ns ; Enable        ; tmp_ram~30       ; Clock    ;
+; N/A           ; None        ; -3.832 ns ; Write_Addr[1] ; tmp_ram~32       ; Clock    ;
+; N/A           ; None        ; -3.832 ns ; Write_Addr[1] ; tmp_ram~34       ; Clock    ;
+; N/A           ; None        ; -3.832 ns ; Write_Addr[1] ; tmp_ram~36       ; Clock    ;
+; N/A           ; None        ; -3.832 ns ; Write_Addr[1] ; tmp_ram~38       ; Clock    ;
+; N/A           ; None        ; -3.840 ns ; Write_Addr[1] ; tmp_ram~16       ; Clock    ;
+; N/A           ; None        ; -3.840 ns ; Write_Addr[1] ; tmp_ram~18       ; Clock    ;
+; N/A           ; None        ; -3.840 ns ; Write_Addr[1] ; tmp_ram~20       ; Clock    ;
+; N/A           ; None        ; -3.840 ns ; Write_Addr[1] ; tmp_ram~22       ; Clock    ;
+; N/A           ; None        ; -3.927 ns ; Write_Addr[1] ; tmp_ram~40       ; Clock    ;
+; N/A           ; None        ; -3.927 ns ; Write_Addr[1] ; tmp_ram~42       ; Clock    ;
+; N/A           ; None        ; -3.927 ns ; Write_Addr[1] ; tmp_ram~44       ; Clock    ;
+; N/A           ; None        ; -3.927 ns ; Write_Addr[1] ; tmp_ram~46       ; Clock    ;
+; N/A           ; None        ; -3.928 ns ; Write_Addr[1] ; tmp_ram~24       ; Clock    ;
+; N/A           ; None        ; -3.928 ns ; Write_Addr[1] ; tmp_ram~26       ; Clock    ;
+; N/A           ; None        ; -3.928 ns ; Write_Addr[1] ; tmp_ram~28       ; Clock    ;
+; N/A           ; None        ; -3.928 ns ; Write_Addr[1] ; tmp_ram~30       ; Clock    ;
+; N/A           ; None        ; -4.068 ns ; Write_Addr[0] ; tmp_ram~24       ; Clock    ;
+; N/A           ; None        ; -4.068 ns ; Write_Addr[0] ; tmp_ram~26       ; Clock    ;
+; N/A           ; None        ; -4.068 ns ; Write_Addr[0] ; tmp_ram~28       ; Clock    ;
+; N/A           ; None        ; -4.068 ns ; Write_Addr[0] ; tmp_ram~30       ; Clock    ;
+; N/A           ; None        ; -4.321 ns ; Write_Addr[0] ; tmp_ram~32       ; Clock    ;
+; N/A           ; None        ; -4.321 ns ; Write_Addr[0] ; tmp_ram~34       ; Clock    ;
+; N/A           ; None        ; -4.321 ns ; Write_Addr[0] ; tmp_ram~36       ; Clock    ;
+; N/A           ; None        ; -4.321 ns ; Write_Addr[0] ; tmp_ram~38       ; Clock    ;
+; N/A           ; None        ; -4.329 ns ; Write_Addr[0] ; tmp_ram~16       ; Clock    ;
+; N/A           ; None        ; -4.329 ns ; Write_Addr[0] ; tmp_ram~18       ; Clock    ;
+; N/A           ; None        ; -4.329 ns ; Write_Addr[0] ; tmp_ram~20       ; Clock    ;
+; N/A           ; None        ; -4.329 ns ; Write_Addr[0] ; tmp_ram~22       ; Clock    ;
+; N/A           ; None        ; -4.415 ns ; Write_Addr[0] ; tmp_ram~40       ; Clock    ;
+; N/A           ; None        ; -4.415 ns ; Write_Addr[0] ; tmp_ram~42       ; Clock    ;
+; N/A           ; None        ; -4.415 ns ; Write_Addr[0] ; tmp_ram~44       ; Clock    ;
+; N/A           ; None        ; -4.415 ns ; Write_Addr[0] ; tmp_ram~46       ; Clock    ;
++---------------+-------------+-----------+---------------+------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 7.2 Build 151 09/26/2007 SJ Full Version
+    Info: Processing started: Fri Nov 06 16:45:41 2020
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off SRAM -c SRAM --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "Clock" is an undefined clock
+Info: Clock "Clock" Internal fmax is restricted to 500.0 MHz between source register "tmp_ram~38" and destination register "Data_out[3]~reg0"
+    Info: fmax restricted to clock pin edge rate 2.0 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 0.814 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X30_Y1_N17; Fanout = 1; REG Node = 'tmp_ram~38'
+            Info: 2: + IC(0.505 ns) + CELL(0.154 ns) = 0.659 ns; Loc. = LCCOMB_X30_Y1_N28; Fanout = 1; COMB Node = 'tmp_ram~550'
+            Info: 3: + IC(0.000 ns) + CELL(0.155 ns) = 0.814 ns; Loc. = LCFF_X30_Y1_N29; Fanout = 1; REG Node = 'Data_out[3]~reg0'
+            Info: Total cell delay = 0.309 ns ( 37.96 % )
+            Info: Total interconnect delay = 0.505 ns ( 62.04 % )
+        Info: - Smallest clock skew is 0.000 ns
+            Info: + Shortest clock path from clock "Clock" to destination register is 2.489 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'Clock'
+                Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 21; COMB Node = 'Clock~clkctrl'
+                Info: 3: + IC(0.674 ns) + CELL(0.618 ns) = 2.489 ns; Loc. = LCFF_X30_Y1_N29; Fanout = 1; REG Node = 'Data_out[3]~reg0'
+                Info: Total cell delay = 1.472 ns ( 59.14 % )
+                Info: Total interconnect delay = 1.017 ns ( 40.86 % )
+            Info: - Longest clock path from clock "Clock" to source register is 2.489 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'Clock'
+                Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 21; COMB Node = 'Clock~clkctrl'
+                Info: 3: + IC(0.674 ns) + CELL(0.618 ns) = 2.489 ns; Loc. = LCFF_X30_Y1_N17; Fanout = 1; REG Node = 'tmp_ram~38'
+                Info: Total cell delay = 1.472 ns ( 59.14 % )
+                Info: Total interconnect delay = 1.017 ns ( 40.86 % )
+        Info: + Micro clock to output delay of source is 0.094 ns
+        Info: + Micro setup delay of destination is 0.090 ns
+Info: tsu for register "tmp_ram~40" (data pin = "Write_Addr[0]", clock pin = "Clock") is 4.654 ns
+    Info: + Longest pin to register delay is 7.056 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.827 ns) = 0.827 ns; Loc. = PIN_E10; Fanout = 4; PIN Node = 'Write_Addr[0]'
+        Info: 2: + IC(4.808 ns) + CELL(0.366 ns) = 6.001 ns; Loc. = LCCOMB_X30_Y1_N0; Fanout = 4; COMB Node = 'rtl~42'
+        Info: 3: + IC(0.309 ns) + CELL(0.746 ns) = 7.056 ns; Loc. = LCFF_X31_Y1_N25; Fanout = 1; REG Node = 'tmp_ram~40'
+        Info: Total cell delay = 1.939 ns ( 27.48 % )
+        Info: Total interconnect delay = 5.117 ns ( 72.52 % )
+    Info: + Micro setup delay of destination is 0.090 ns
+    Info: - Shortest clock path from clock "Clock" to destination register is 2.492 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'Clock'
+        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 21; COMB Node = 'Clock~clkctrl'
+        Info: 3: + IC(0.677 ns) + CELL(0.618 ns) = 2.492 ns; Loc. = LCFF_X31_Y1_N25; Fanout = 1; REG Node = 'tmp_ram~40'
+        Info: Total cell delay = 1.472 ns ( 59.07 % )
+        Info: Total interconnect delay = 1.020 ns ( 40.93 % )
+Info: tco from clock "Clock" to destination pin "Data_out[0]" through register "Data_out[0]~reg0" is 7.087 ns
+    Info: + Longest clock path from clock "Clock" to source register is 2.489 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'Clock'
+        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 21; COMB Node = 'Clock~clkctrl'
+        Info: 3: + IC(0.674 ns) + CELL(0.618 ns) = 2.489 ns; Loc. = LCFF_X30_Y1_N21; Fanout = 1; REG Node = 'Data_out[0]~reg0'
+        Info: Total cell delay = 1.472 ns ( 59.14 % )
+        Info: Total interconnect delay = 1.017 ns ( 40.86 % )
+    Info: + Micro clock to output delay of source is 0.094 ns
+    Info: + Longest register to pin delay is 4.504 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X30_Y1_N21; Fanout = 1; REG Node = 'Data_out[0]~reg0'
+        Info: 2: + IC(2.522 ns) + CELL(1.982 ns) = 4.504 ns; Loc. = PIN_B6; Fanout = 0; PIN Node = 'Data_out[0]'
+        Info: Total cell delay = 1.982 ns ( 44.01 % )
+        Info: Total interconnect delay = 2.522 ns ( 55.99 % )
+Info: th for register "tmp_ram~46" (data pin = "Data_in[3]", clock pin = "Clock") is -2.108 ns
+    Info: + Longest clock path from clock "Clock" to destination register is 2.492 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.854 ns) = 0.854 ns; Loc. = PIN_N20; Fanout = 1; CLK Node = 'Clock'
+        Info: 2: + IC(0.343 ns) + CELL(0.000 ns) = 1.197 ns; Loc. = CLKCTRL_G3; Fanout = 21; COMB Node = 'Clock~clkctrl'
+        Info: 3: + IC(0.677 ns) + CELL(0.618 ns) = 2.492 ns; Loc. = LCFF_X31_Y1_N27; Fanout = 1; REG Node = 'tmp_ram~46'
+        Info: Total cell delay = 1.472 ns ( 59.07 % )
+        Info: Total interconnect delay = 1.020 ns ( 40.93 % )
+    Info: + Micro hold delay of destination is 0.149 ns
+    Info: - Shortest pin to register delay is 4.749 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.807 ns) = 0.807 ns; Loc. = PIN_T10; Fanout = 4; PIN Node = 'Data_in[3]'
+        Info: 2: + IC(3.734 ns) + CELL(0.053 ns) = 4.594 ns; Loc. = LCCOMB_X31_Y1_N26; Fanout = 1; COMB Node = 'tmp_ram~46feeder'
+        Info: 3: + IC(0.000 ns) + CELL(0.155 ns) = 4.749 ns; Loc. = LCFF_X31_Y1_N27; Fanout = 1; REG Node = 'tmp_ram~46'
+        Info: Total cell delay = 1.015 ns ( 21.37 % )
+        Info: Total interconnect delay = 3.734 ns ( 78.63 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Allocated 202 megabytes of memory during processing
+    Info: Processing ended: Fri Nov 06 16:45:41 2020
+    Info: Elapsed time: 00:00:00
+
+

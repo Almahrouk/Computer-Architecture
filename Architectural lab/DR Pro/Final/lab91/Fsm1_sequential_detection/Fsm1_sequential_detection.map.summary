@@ -1,0 +1,15 @@
+Analysis & Synthesis Status : Successful - Wed Dec 22 08:22:19 2021
+Quartus II Version : 7.2 Build 151 09/26/2007 SJ Full Version
+Revision Name : Fsm1_sequential_detection
+Top-level Entity Name : Fsm1_sequential_detection
+Family : Stratix II
+Logic utilization : N/A
+    Combinational ALUTs : 4
+    Dedicated logic registers : 3
+Total registers : 3
+Total pins : 4
+Total virtual pins : 0
+Total block memory bits : 0
+DSP block 9-bit elements : 0
+Total PLLs : 0
+Total DLLs : 0

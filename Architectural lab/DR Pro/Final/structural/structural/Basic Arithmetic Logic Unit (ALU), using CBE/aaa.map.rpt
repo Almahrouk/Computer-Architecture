@@ -1,0 +1,263 @@
+Analysis & Synthesis report for aaa
+Fri Nov 27 14:22:36 2020
+Quartus II 64-Bit Version 7.2 Build 151 09/26/2007 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. General Register Statistics
+  8. Multiplexer Restructuring Statistics (Restructuring Performed)
+  9. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2007 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                             ;
++-------------------------------+------------------------------------------+
+; Analysis & Synthesis Status   ; Successful - Fri Nov 27 14:22:36 2020    ;
+; Quartus II 64-Bit Version     ; 7.2 Build 151 09/26/2007 SJ Full Version ;
+; Revision Name                 ; aaa                                      ;
+; Top-level Entity Name         ; aaa                                      ;
+; Family                        ; Stratix II                               ;
+; Logic utilization             ; N/A                                      ;
+;     Combinational ALUTs       ; 28                                       ;
+;     Dedicated logic registers ; 0                                        ;
+; Total registers               ; 0                                        ;
+; Total pins                    ; 29                                       ;
+; Total virtual pins            ; 0                                        ;
+; Total block memory bits       ; 0                                        ;
+; DSP block 9-bit elements      ; 0                                        ;
+; Total PLLs                    ; 0                                        ;
+; Total DLLs                    ; 0                                        ;
++-------------------------------+------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                         ;
++-----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                      ; Setting            ; Default Value      ;
++-----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                       ; aaa                ; aaa                ;
+; Family name                                                                 ; Stratix II         ; Stratix II         ;
+; Use Generated Physical Constraints File                                     ; Off                ;                    ;
+; Use smart compilation                                                       ; Off                ; Off                ;
+; Maximum processors allowed for parallel compilation                         ; 1                  ; 1                  ;
+; Restructure Multiplexers                                                    ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                         ; Off                ; Off                ;
+; Preserve fewer node names                                                   ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                   ; Off                ; Off                ;
+; Verilog Version                                                             ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                                    ; Auto               ; Auto               ;
+; Safe State Machine                                                          ; Off                ; Off                ;
+; Extract Verilog State Machines                                              ; On                 ; On                 ;
+; Extract VHDL State Machines                                                 ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                           ; Off                ; Off                ;
+; Add Pass-Through Logic to Inferred RAMs                                     ; On                 ; On                 ;
+; Parallel Synthesis                                                          ; Off                ; Off                ;
+; DSP Block Balancing                                                         ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                          ; On                 ; On                 ;
+; Power-Up Don't Care                                                         ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                ; Off                ; Off                ;
+; Remove Duplicate Registers                                                  ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                        ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                      ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                   ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                        ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                         ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                              ; Off                ; Off                ;
+; Optimization Technique -- Stratix II/III/HardCopy II/Stratix II GX/Arria GX ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix II/Stratix III                                ; 70                 ; 70                 ;
+; Auto Carry Chains                                                           ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                        ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                       ; Off                ; Off                ;
+; Perform gate-level register retiming                                        ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax                      ; On                 ; On                 ;
+; Auto ROM Replacement                                                        ; On                 ; On                 ;
+; Auto RAM Replacement                                                        ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                  ; On                 ; On                 ;
+; Auto Shift Register Replacement                                             ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                               ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                           ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                      ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                    ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                           ; Off                ; Off                ;
+; Auto Resource Sharing                                                       ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                          ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                          ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                               ; Off                ; Off                ;
+; Ignore translate_off and synthesis_off directives                           ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                          ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                          ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                            ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                                ; Normal compilation ; Normal compilation ;
+; HDL message level                                                           ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                             ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                    ; 100                ; 100                ;
+; Clock MUX Protection                                                        ; On                 ; On                 ;
+; Block Design Naming                                                         ; Auto               ; Auto               ;
++-----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                   ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                      ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+
+; aaa.vhd                          ; yes             ; User VHDL File  ; E:/projects/LAB10/structural/Basic Arithmetic Logic Unit (ALU), using CBE/aaa.vhd ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++-----------------------------------------------+-------+
+; Resource                                      ; Usage ;
++-----------------------------------------------+-------+
+; Estimated ALUTs Used                          ; 28    ;
+; Dedicated logic registers                     ; 0     ;
+;                                               ;       ;
+; Estimated ALUTs Unavailable                   ; 7     ;
+;                                               ;       ;
+; Total combinational functions                 ; 28    ;
+; Combinational ALUT usage by number of inputs  ;       ;
+;     -- 7 input functions                      ; 0     ;
+;     -- 6 input functions                      ; 9     ;
+;     -- 5 input functions                      ; 1     ;
+;     -- 4 input functions                      ; 1     ;
+;     -- <=3 input functions                    ; 17    ;
+;                                               ;       ;
+; Combinational ALUTs by mode                   ;       ;
+;     -- normal mode                            ; 12    ;
+;     -- extended LUT mode                      ; 0     ;
+;     -- arithmetic mode                        ; 16    ;
+;     -- shared arithmetic mode                 ; 0     ;
+;                                               ;       ;
+; Estimated ALUT/register pairs used            ; 35    ;
+;                                               ;       ;
+; Total registers                               ; 0     ;
+;     -- Dedicated logic registers              ; 0     ;
+;     -- I/O registers                          ; 0     ;
+;                                               ;       ;
+; Estimated ALMs:  partially or completely used ; 18    ;
+;                                               ;       ;
+; I/O pins                                      ; 29    ;
+; Maximum fan-out node                          ; iS0   ;
+; Maximum fan-out                               ; 16    ;
+; Total fan-out                                 ; 120   ;
+; Average fan-out                               ; 2.11  ;
++-----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                              ;
++----------------------------------+-------------------+--------------+-------------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------+--------------+
+; Compilation Hierarchy Node       ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name              ; Library Name ;
++----------------------------------+-------------------+--------------+-------------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------+--------------+
+; |aaa                             ; 28 (0)            ; 0 (0)        ; 0                 ; 0            ; 0       ; 0         ; 0         ; 29   ; 0            ; |aaa                             ; work         ;
+;    |Adder_8:B1_C046|             ; 8 (8)             ; 0 (0)        ; 0                 ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |aaa|Adder_8:B1_C046             ; work         ;
+;    |BusMultiplexer81_8:B1_C1125| ; 9 (9)             ; 0 (0)        ; 0                 ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |aaa|BusMultiplexer81_8:B1_C1125 ; work         ;
+;    |Complem_8:B1_C049|           ; 8 (8)             ; 0 (0)        ; 0                 ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |aaa|Complem_8:B1_C049           ; work         ;
+;    |Multiplexer_8_1:B1_C943|     ; 1 (1)             ; 0 (0)        ; 0                 ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |aaa|Multiplexer_8_1:B1_C943     ; work         ;
+;    |NOR8_gate:B1_C886|           ; 2 (2)             ; 0 (0)        ; 0                 ; 0            ; 0       ; 0         ; 0         ; 0    ; 0            ; |aaa|NOR8_gate:B1_C886           ; work         ;
++----------------------------------+-------------------+--------------+-------------------+--------------+---------+-----------+-----------+------+--------------+----------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+; 8:1                ; 8 bits    ; 40 ALUTs      ; 32 ALUTs             ; 8 ALUTs                ; No         ; |aaa|BusMultiplexer81_8:B1_C1125|Q_00 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 7.2 Build 151 09/26/2007 SJ Full Version
+    Info: Processing started: Fri Nov 27 14:22:19 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off aaa -c aaa
+Info: Found 18 design units, including 9 entities, in source file aaa.vhd
+    Info: Found design unit 1: aaa-structural
+    Info: Found design unit 2: NOR8_gate-behavioral
+    Info: Found design unit 3: BusNOT_gate_8-behavioral
+    Info: Found design unit 4: BusAND2_gate_8-behavioral
+    Info: Found design unit 5: BusOR2_gate_8-behavioral
+    Info: Found design unit 6: Multiplexer_8_1-behavioral
+    Info: Found design unit 7: BusMultiplexer81_8-behavioral
+    Info: Found design unit 8: Adder_8-behavioral
+    Info: Found design unit 9: Complem_8-behavioral
+    Info: Found entity 1: aaa
+    Info: Found entity 2: NOR8_gate
+    Info: Found entity 3: BusNOT_gate_8
+    Info: Found entity 4: BusAND2_gate_8
+    Info: Found entity 5: BusOR2_gate_8
+    Info: Found entity 6: Multiplexer_8_1
+    Info: Found entity 7: BusMultiplexer81_8
+    Info: Found entity 8: Adder_8
+    Info: Found entity 9: Complem_8
+Info: Elaborating entity "aaa" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at aaa.vhd(335): object "ncp3_B1_C046" assigned a value but never read
+Info: Elaborating entity "Adder_8" for hierarchy "Adder_8:B1_C046"
+Info: Elaborating entity "Complem_8" for hierarchy "Complem_8:B1_C049"
+Info: Elaborating entity "NOR8_gate" for hierarchy "NOR8_gate:B1_C886"
+Info: Elaborating entity "Multiplexer_8_1" for hierarchy "Multiplexer_8_1:B1_C943"
+Info: Elaborating entity "BusMultiplexer81_8" for hierarchy "BusMultiplexer81_8:B1_C1125"
+Info: Elaborating entity "BusAND2_gate_8" for hierarchy "BusAND2_gate_8:B1_C1376"
+Info: Elaborating entity "BusOR2_gate_8" for hierarchy "BusOR2_gate_8:B1_C1377"
+Info: Elaborating entity "BusNOT_gate_8" for hierarchy "BusNOT_gate_8:B1_C1502"
+Info: Implemented 57 device resources after synthesis - the final resource count might be different
+    Info: Implemented 19 input pins
+    Info: Implemented 10 output pins
+    Info: Implemented 28 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Allocated 4451 megabytes of memory during processing
+    Info: Processing ended: Fri Nov 27 14:22:36 2020
+    Info: Elapsed time: 00:00:17
+
+

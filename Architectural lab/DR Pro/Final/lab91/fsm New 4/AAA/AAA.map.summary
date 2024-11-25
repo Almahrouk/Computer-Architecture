@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Nov 27 12:32:28 2020
+Quartus II Version : 7.2 Build 151 09/26/2007 SJ Full Version
+Revision Name : AAA
+Top-level Entity Name : AAA
+Family : Cyclone II
+Total logic elements : 5
+    Total combinational functions : 5
+    Dedicated logic registers : 5
+Total registers : 5
+Total pins : 4
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

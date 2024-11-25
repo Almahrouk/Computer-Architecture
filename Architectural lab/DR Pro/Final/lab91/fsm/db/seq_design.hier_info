@@ -1,0 +1,12 @@
+|seq_design
+a => Selector0.IN3
+a => Selector3.IN3
+a => Selector2.IN3
+a => Selector1.IN3
+a => Selector3.IN2
+a => Selector1.IN2
+a => Selector0.IN2
+a => Selector2.IN2
+x <= comb_logic~0.DB_MAX_OUTPUT_PORT_TYPE
+
+

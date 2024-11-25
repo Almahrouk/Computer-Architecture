@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Lab9/Downloads/COUNTER_3/simulation/qsim
+vCOUNTER_3
+Z1 !s110 1672913829
+!i10b 1
+!s100 IFFn1IC81:5Kz9FH0dbN;0
+IW;3iERUZ59=N=HAbYZVYE3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1672913828
+8COUNTER_3.vo
+FCOUNTER_3.vo
+L0 31
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1672913829.000000
+!s107 COUNTER_3.vo|
+!s90 -work|work|COUNTER_3.vo|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@c@o@u@n@t@e@r_3
+vCOUNTER_3_vlg_vec_tst
+R1
+!i10b 1
+!s100 BTiHeUbD4O30eD46]XLmI0
+Id^jh9Q]SLV<ko6YdamL7i2
+R2
+R0
+w1672913825
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R3
+r1
+!s85 0
+31
+R4
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R5
+R6
+n@c@o@u@n@t@e@r_3_vlg_vec_tst
