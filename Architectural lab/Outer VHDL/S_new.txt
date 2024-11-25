@@ -1,0 +1,483 @@
+module Single_Cycle_CPU (Inst ,Reset ,Clock, Run ,Done);
+
+input [31:0]Inst;
+input [0:0]Reset ,Run ;
+input Clock;
+output [0:0] Done;
+
+ 
+wire [31:0]address; 
+reg  [31:0] instruction;
+
+wire [5:0] OP;
+wire [5:0] fun;
+wire [4:0] shift;
+wire [4:0] rt;
+wire [4:0] rs;
+wire [5:0] rd;
+wire [15:0] imm;
+wire [25:0] offset;
+
+wire [31:0]Read_Data1, Read_Data2;
+
+wire [31:0] ALU_out ;
+wire ALU_zeroFlag;
+
+wire [31:0] imm_after_extend ;
+
+wire [31:0] out_DataMemMux ; 
+
+wire [9:0] Signal;
+
+wire [2:0] operation;
+
+wire PCSrc ;
+
+wire [31:0] Pc_address ; 
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// module Program_Counter ( jump_inst , pc_reg , jump_signal , PCSrc , SignExtend_out , pc_address);
+PCSrc = Signal[6] & ALU_zeroFlag ;
+
+Program_Counter pc_add (offset ,address , Signal[9] , PCSrc , imm_after_extend , Pc_address  );
+
+regn PC (Pc_address ,Reset ,Run ,Clock ,address); 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+InstructionMemory Inst_Mem ( address ,instruction ,Clock , Reset);
+
+
+
+assign Inst <= instruction ;
+assign OP <= Inst[31:26];
+assign rt <= Inst[25:21];
+assign rs <= Inst[20:16];
+assign rd <= Inst[15:11];
+assign shift <= Inst[10:6];
+assign fun <= Inst[5:0];
+assign imm <= Inst[15:0];     //need sing extend
+assign offset <= Inst[25:0]; //need sing extend
+/*
+control_signal[0] = R_format ;          //RegDst
+control_signal[1] = lw | sw ;           //ALUSrc
+control_signal[2] =  lw ;               //MemtoReg
+control_signal[3] = R_format | lw ;     //RegWrite
+control_signal[4] = lw ;                //MemRead
+control_signal[5] = sw ;                //MemWrite
+control_signal[6] = beq ;               //Branch
+control_signal[7] = R_format ;          //ALUOp1
+control_signal[8] = beq ;               //ALUOpO
+control_signal[9] = J_format ;          //Jump 
+Control_unit  ControlUnit (OP[0],OP[1],OP[2],OP[3],OP[4],OP[5] ,Signal);
+ */
+ 
+// RegDst from control unit 
+Mux RegDst (rs , rd , Signal[0] , write_reg);
+ 
+
+// RegWrite  from control unit 
+// write_reg from Mux RegDst 
+
+Register_File reg_file (rt ,rs ,write_reg , out_DataMemMux , Signal[3] , Clock ,Reset , read_data1, read_data2);
+
+assign Read_Data1 <= read_data1;
+assign Read_Data2 <= read_data2;
+
+// ALUSrc from control unit 
+Mux AluSrc (Read_Data2 , imm_after_extend , Signal[1] , alu_src2); 
+
+// ALUOpO and ALUOp1 from control unit 
+Alu_Control AluControl (fun ,Signal[8] ,Signal[7] , operation);
+
+// operation from ALU control unit 
+ALU alu_operation (Read_Data1 , alu_src2 , operation , ALU_out , ALU_zeroFlag);
+
+
+SignExtend  sign_Extend (imm , imm_after_extend );
+
+// MemWrite and MemRead from control unit
+DataMemory  data_Memory (ALU_out , Read_Data2 , readData , Signal[5] , Signal[4]  , Clock);
+
+
+// MemtoReg from control unit M
+Mux DataMemMux ( readData , ALU_out , Signal[2] , out_DataMemMux); 
+
+
+
+
+
+
+endmodule 
+
+
+
+
+
+
+
+
+
+
+
+module regn (regn_Data ,regn_Rest, regn_en , Clock , regn_out);
+ parameter n=32;
+ input [n-1:0] regn_Data;
+ input regn_Rest, regn_en, Clock;
+ output reg [n-1:0] regn_out;
+ 
+ always @(posedge Clock)
+      if (!regn_Rest)
+	    regn_out <= 0;
+		
+	  else if (regn_en)
+	    regn_out <= regn_Data;
+ 
+ endmodule 
+ 
+
+
+
+
+
+
+
+// module need modify 
+module InstructionMemory (address ,instruction , clock , reset );
+  input wire [31:0] address;
+  output reg [31:0] instruction;
+ /* [9:0] memory */ reg [31:0] memory [0:1023];  // Assuming 256 instructions of 16 bits each
+   integer i;
+  always @(posedge clock or negedge reset) begin
+    if (!reset) begin
+      // Initialize memory to some default values if needed
+      for ( i = 0; i < 1024; i = i + 1) begin
+        memory[i] <= 32'h00000000;  // You can set your default values here
+      end
+    end else begin
+      // Read instruction from memory based on the address
+      instruction <= memory[address];
+    end
+  end
+endmodule
+
+
+/*
+module add (A , B ,C);
+ input wire [31:0] A;
+ input wire [31:0] B;
+ output reg [31:0] C;
+ 
+  C <= A + B;
+  
+ endmodule
+ 
+ */
+ 
+module add (A , B ,C);
+ input wire [31:0] A;
+ input wire [31:0] B;
+ output wire  [31:0] C;
+  
+ assign C = A + B;
+  
+ endmodule
+ 
+
+
+
+
+ 
+ 
+ 
+ /*
+ 
+  module Mux (mux_inp0 , mux_inp1, Sel , Mux_Out); 
+ parameter m = 32;
+ input [m-1:0] mux_inp0 , mux_inp1 ;
+ input [0:0] Sel;
+ output reg [m-1:0] Mux_Out;
+
+		
+	assign Mux_Out = (Sel == 1'b0) ? mux_inp0 : mux_inp1;
+	
+endmodule	
+	  
+*/
+
+module Mux (mux_inp0 , mux_inp1, Sel , Mux_Out); 
+ parameter m = 32;
+ input [m-1:0] mux_inp0 , mux_inp1 ;
+ input [0:0] Sel;
+ output wire [m-1:0] Mux_Out;
+
+		
+assign Mux_Out = (Sel == 1'b0) ? mux_inp0 : mux_inp1;
+	
+endmodule	
+
+
+
+
+
+	  
+	  
+	  
+module Register_File (read_reg1 , read_reg2 ,write_reg ,write_data ,RegWrite ,clk ,reset , read_data1 , read_data2);
+
+  input wire [4:0] read_reg1;  
+  input wire [4:0] read_reg2;  
+  input wire [4:0]  write_reg;   
+  input wire [31:0] write_data;
+  input wire RegWrite;  
+  input wire clk;        
+  input wire reset;      
+
+  output reg [31:0] read_data1; 
+  output reg [31:0] read_data2;  
+
+  reg [31:0] registers [0:31]; 
+ integer i;
+  always @(posedge clk or negedge reset) begin
+    if (!reset) begin
+    
+      for ( i = 0; i < 32; i = i + 1) begin
+        registers[i] <= 32'h0;
+      end
+    end else begin
+      
+      read_data1 <= registers[read_reg1];
+      read_data2 <= registers[read_reg2];
+
+      // Write operation need modify after coding control unit
+      if (RegWrite) begin
+        registers[write_reg] <= write_data;
+      end
+    end
+  end
+
+endmodule
+	  
+	  
+/*  
+	     
+module ALU (operand1 , operand2 , aluOp ,result ,zeroFlag );
+
+input wire [31:0] operand1;
+  input wire [31:0] operand2;
+  input wire [2:0] aluOp;  // ALU operation code
+  output reg [31:0] result;
+  output reg zeroFlag;
+
+  reg [31:0] result_internal;
+  reg zeroFlag_internal;
+
+  always @* begin //(*)
+    case (aluOp)
+      3'b000: result_internal = operand1 + operand2;  // Addition
+      3'b001: result_internal = operand1 - operand2;  // Subtraction
+      3'b010: result_internal = operand1 & operand2;  // Bitwise AND
+      3'b011: result_internal = operand1 | operand2;  // Bitwise OR
+      3'b100: result_internal = operand1 ^ operand2;  // Bitwise XOR
+      3'b101: result_internal = operand1 << operand2; // Shift left (logical)
+      3'b110: result_internal = operand1 >> operand2; // Shift right (logical)
+      default: result_internal = 32'h0; // Default to 0 for unsupported operations
+    endcase
+
+    // Check if the result is zero
+    zeroFlag_internal = (result_internal == 32'h0);
+  end
+
+  assign result = result_internal;
+  assign zeroFlag = zeroFlag_internal;
+
+endmodule
+*/
+
+	     
+module ALU (operand1 , operand2 , aluOp ,result ,zeroFlag );
+
+input wire [31:0] operand1;
+  input wire [31:0] operand2;
+  input wire [2:0] aluOp;  // ALU operation code
+  output wire [31:0] result;
+  output wire zeroFlag;
+
+  reg [31:0] result_internal;
+  reg zeroFlag_internal;
+
+  always @* begin //(*)
+    case (aluOp)
+      3'b000: result_internal = operand1 + operand2;  // Addition
+      3'b001: result_internal = operand1 - operand2;  // Subtraction
+      3'b010: result_internal = operand1 & operand2;  // Bitwise AND
+      3'b011: result_internal = operand1 | operand2;  // Bitwise OR
+      3'b100: result_internal = operand1 ^ operand2;  // Bitwise XOR
+      3'b101: result_internal = operand1 << operand2; // Shift left (logical)
+      3'b110: result_internal = operand1 >> operand2; // Shift right (logical)
+      default: result_internal = 32'h0; // Default to 0 for unsupported operations
+    endcase
+
+    // Check if the result is zero
+    zeroFlag_internal = (result_internal == 32'h0);
+  end
+
+  assign result = result_internal;
+  assign zeroFlag = zeroFlag_internal;
+
+endmodule
+
+
+
+
+
+/*
+module SignExtend_16_to_32 (
+  input wire signed [15:0] in_16,
+  output reg signed [31:0] out_32
+);
+
+  always @* begin
+    // Sign extension logic
+    if (in_16[15] == 1'b0) begin
+      // Positive number, extend with zeros
+      out_32 = {16'b0, in_16};
+    end else begin
+      // Negative number, extend with ones
+      out_32 = {16'b1, in_16};
+    end
+  end
+
+endmodule
+*/
+
+
+module SignExtend (in_16 , out_32 );
+  input wire signed [15:0] in_16;
+  output reg signed [31:0] out_32;
+  always @* begin
+    
+    if (in_16[15] == 1'b0) begin
+      out_32 = {16'b0, in_16};
+    end 
+	
+	else begin
+   
+      out_32 = {16'b1, in_16};
+    end
+  end
+
+endmodule
+
+
+
+
+module DataMemory (address , writeData , readData , write_En , read_En  , clk);
+
+
+ input wire clk;
+  input wire [31:0] address;
+  input wire [31:0] writeData;
+  input wire write_En , read_En;
+  output reg [31:0] readData;
+
+  reg [31:0] mem [0:1023]; // Assuming 1024 32-bit data entries, adjust the size as needed
+
+  always @(posedge clk) begin
+    // Read data from memory based on the address
+   if (read_En) begin
+   readData <= mem[address];
+   end 
+    // Write operation
+    if (write_En) begin
+      mem[address] <= writeData;
+    end
+  end
+
+endmodule
+
+
+
+
+
+
+
+module Control_unit (op1 ,op2, op3, op4, op5, op6, control_signal);
+input op1 ,op2, op3, op4, op5, op6 ;
+output [9:0]control_signal ;
+
+wire R_format = ~op1 & ~op2 & ~op3 & ~op4 & ~op5 & ~op6 ;
+wire lw =  op1 & op2 & ~op3 & ~op4 & ~op5 & op6 ;
+wire sw =  op1 & op2 & ~op3 & op4 & ~op5 & op6 ;
+wire beq = ~op1 & ~op2 & op3 & ~op4 & ~op5 & ~op6 ;
+wire J_format = op1 & op2 & op3 & op4 & op5 & op6 ;
+control_signal[0] = R_format ;          //RegDst
+control_signal[1] = lw | sw ;           //ALUSrc
+control_signal[2] =  lw ;               //MemtoReg
+control_signal[3] = R_format | lw ;     //RegWrite
+control_signal[4] = lw ;                //MemRead
+control_signal[5] = sw ;                //MemWrite
+control_signal[6] = beq ;               //Branch
+control_signal[7] = R_format ;          //ALUOp1
+control_signal[8] = beq ;               //ALUOpO
+control_signal[9] = J_format ;          //Jump                   /***************************/
+
+
+endmodule 
+
+
+
+
+
+module Alu_Control (alu_fun , aluop0, aluop1 , Operation);
+input  [5:0]alu_fun ;
+input  aluop0, aluop1 ;
+output [2:0]Operation ; 
+
+wire operation_0 =  aluop1 & (alu_fun[0] | alu_fun[3]) ;
+wire operation_1 = ~aluop1 | ~alu_fun[2] ;
+wire operation_2 =  aluop0 | (aluop1 & alu_fun[1]); 
+
+Operation ={operation_0 , operation_1 ,operation_2} ;
+
+
+endmodule 
+
+
+
+
+module Program_Counter ( jump_inst , pc_reg , jump_signal , PCSrc , SignExtend_out , pc_address);
+
+input [25:0] jump_inst;
+input [31:0] pc_reg ,SignExtend_out;
+input jump_signal , PCSrc ;
+output [31:0] pc_address;
+
+wire [31:0] pc_add_out ,SignExtend_shift ;
+wire [31:0] Mux1_Out , Mux2_Out;
+wire [27:0] jump_inst_shift;
+wire [31:0] jump_address;
+add pc_add (32'h0004 , pc_reg , pc_add_out );
+
+SignExtend_shift = SignExtend_out << 2 ;
+
+add pc_result (pc_add_out, SignExtend_shift , add_pc_result );
+
+// module Mux (mux_inp0 , mux_inp1, Sel , Mux_Out);  
+
+Mux branch_pc (pc_add_out , add_pc_result, PCSrc , Mux1_Out);  // PCSrc from and
+
+jump_inst_shift = jump_inst << 2 ;
+jump_address = {pc_add_out[31:28] , jump_inst_shift};
+
+
+Mux branch_jump (Mux1_Out , jump_address, jump_signal  , Mux2_Out);
+
+
+pc_address = Mux2_Out ;
+
+endmodule
+
