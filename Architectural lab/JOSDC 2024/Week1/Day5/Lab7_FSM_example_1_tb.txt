@@ -1,0 +1,38 @@
+// Testbench
+module part1_for_simulation_tb;
+
+  reg clk, x;
+  wire y;
+  wire [1:0] state;
+  
+  // Instantiate device under test
+  fsm uut (.clk(clk), .x(x), .y(y), .state(state));
+
+  // Clock generation
+  initial 
+    clk = 1'b0;
+    
+  
+  always #10 clk = ~clk; // Toggle clock every 10 time units
+
+  // Dump waves
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(1);
+  end
+
+  // Test vector application
+  initial begin
+    x = 0;
+    #500; x = 1;
+    #520; x = 0;
+    #500; x = 1;
+    #1000; x = 0;
+  end
+
+  // Stop simulation
+  initial begin
+    #3000; $stop;
+  end
+
+endmodule

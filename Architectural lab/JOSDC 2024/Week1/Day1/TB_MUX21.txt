@@ -1,0 +1,23 @@
+module test_mux2to1;
+  reg s, B, A;
+  wire out;
+  MUX mux21(.S(s), .B(B), .A(A), .out(out));
+  initial begin
+    $monitor("sel = %b: A = %b, B = %b --> out = %b", s, A, B, out);
+    $dumpfile("dump.vcd");// vcd=value change dump
+    $dumpvars(1); // dump all variables in the wave form
+    s = 1'b0; B=1'b0; A=1'b0;
+    #10
+    s = 1'b0; B=1'b0; A=1'b1;
+    #10
+    s = 1'b0; B=1'b1; A=1'b0;
+    #10
+    s = 1'b1; B=1'b1; A=1'b0;
+    #10
+    s = 1'b1; B=1'b0; A=1'b1;
+    #20
+    s = 1'b1; B=1'b0; A=1'b0;
+    #200 $finish;
+    
+  end
+endmodule
