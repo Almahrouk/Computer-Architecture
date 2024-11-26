@@ -1,0 +1,56 @@
+// System Verilog
+
+// Structural:
+==> Focuses on building blocks using logic gates.
+Gate-Type gate-name(output, input1, input2);
+
+// Code:
+
+module light (x1, x2, f);
+	// Initialize input & output & wire
+	input x1, x2;
+	output f;
+
+	// We need to use wire
+	wire w1, w2;
+
+	// Start
+	and n1(w1, x1, ~x2);
+	and n2(w2, ~x1, x2);
+
+	or o1(f, w1, w2);
+
+endmodule
+
+
+/////
+
+// Behavier Ass
+// 1) Continues  =>  No Wire Needed && No CLK Need
+
+	// Start
+	assign f = (x1 & ~x2) | (~x1, x2); 
+
+
+
+
+// 2) Procedural No Wire Needed && No CLK Need   || Output is a Register
+
+module light (x1, x2, f);
+	// Initialize input & output & wire
+	input x1, x2;
+	output reg f;
+
+	// Sensetivity list  ( any change in output ==> evaluate a condition )
+	
+	always @(x1, x2)
+		if (x1 != x2)
+			f = 1;
+	else
+		f = 0;
+
+endmodule
+
+
+
+

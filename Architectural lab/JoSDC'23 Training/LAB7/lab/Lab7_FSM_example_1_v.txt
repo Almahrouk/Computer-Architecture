@@ -1,0 +1,61 @@
+// Code your design here
+module fsm(clk, x, y, state);
+  input  clk;
+  input  x;
+  output y;
+  output reg [1:0] state; // 2-bit | only to view on waveform diagram
+   
+
+ 
+  // State encodings
+  parameter [1:0] // same size of state => 2-bit
+
+// 4 state | 2-bit each 
+    STATE_0 = 2'b00,
+    STATE_1 = 2'b01,
+    STATE_2 = 2'b10,
+    STATE_3 = 2'b11;
+   
+
+
+ 
+  // State machine output
+  assign y = (state == STATE_3); // AND Gate (A AND B)  | use comper
+    
+  // State transitions
+  always @(posedge clk) begin
+    case (state)  // 4 state -> 4 cases
+
+      STATE_0: // x=0 -> go to S1/0   || x=1 -> stay on S0/0
+        if (~x) begin // x=0
+          state <= STATE_1;
+        end else begin // x=1
+          state <= STATE_0;
+        end
+
+      STATE_1: // x=1 -> stay on S1/0   || x=0 -> go to S2/0
+        if (x) begin
+          state <= STATE_2;
+        end else begin
+          state <= STATE_1;
+        end
+
+      STATE_2: // x=1 -> go to S3/0   || x=0 -> go to S1/0
+        if (x) begin
+          state <= STATE_3;
+        end else begin
+          state <= STATE_1;
+        end
+
+      STATE_3: // x=1 -> go to S0/0   || x=0 -> go to S1/0
+        if (x) begin
+          state <= STATE_0;
+        end else begin
+          state <= STATE_1;
+        end
+      default:
+        state <= STATE_0;
+    endcase
+  end
+
+endmodule

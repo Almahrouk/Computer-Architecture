@@ -1,0 +1,30 @@
+// D filp-flop
+// rising-edge -> (posedge) , folling-edge -> (negedge)
+
+// Qa chek on all range on Clk when Clk = 1 ===> Copy Signal Of D and stay
+// Qb Chek when Clk is up-edge (same of D value) 
+// Qc chek when Clk is down-edge (same of D value)
+
+
+
+
+
+module part4 (Clk, D, Qa, Qb, Qc);
+	input Clk, D;
+	output reg Qa, Qb, Qc;
+	
+	// gated D-latch
+  always @(*)  // This Line mean That Any Change On One Of input of output values , Then come here and chek 
+    if(Clk == 1'b1)  // Clk is High
+      Qa = D;
+	
+	// positive-edge triggered D FF
+  always @(posedge Clk)
+    Qb = D;
+	
+	// negative-edge triggered D FF 
+  always @(negedge Clk)
+    Qc = D;
+  
+endmodule
+  

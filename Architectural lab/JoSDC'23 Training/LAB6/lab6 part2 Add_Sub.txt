@@ -1,0 +1,54 @@
+// part2
+// Only Some Few Changes
+// Create A New (add_sub) input ==> if = 0 (Do Add) || if = 1 (Do Sub)
+
+
+
+	wire Add_Sub; // 1-bit
+
+	assign Add_Sub = SW[9];
+
+
+
+
+
+
+
+
+// A + (-B) ===> Make B to 2nd Complement:
+// 1] Use (B) XOR (Add_Sub)
+// 2] Then Add 1 \Ci\
+// 
+
+// Add_Sub is 1-bit, to repete it to 8-bit use:
+// {8{Add_Sub}}
+// ^ ==> XOR
+// A_reg ^ {8{Add_Sub}}  ==> if Add_Sub = 1 ==> A_reg conver to 1st complement
+// (A_reg ^ {8{Add_Sub}}) + Add_Sub   ==> 2nd Complement
+
+	// assign {carry, S} = A + B;
+	// assign {carry, S} = S_reg + A_reg;
+	assign {carry, S} = S_reg + (A_reg ^ {8{Add_Sub}}) + Add_Sub;
+
+
+
+
+
+
+// overflow
+
+// The New
+	assign overflow = ((Add_Sub ^ A_reg[7]) ~^ S_reg[7])  &  ((Add_Sub ^ A_reg[7]) ^ S[7]);
+
+
+
+
+
+
+
+
+
+
+
+
+

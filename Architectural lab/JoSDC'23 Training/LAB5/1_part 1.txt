@@ -1,0 +1,33 @@
+// Review
+module counter(Clock, Reset_n, Q);
+	parameter n = 4; // size of the counter (#bit)
+
+	input Clock, Reset_n;
+	output [n-1:0] Q; // n-bit counter
+
+
+	reg [n-1:0] Q;
+
+
+	always @(posedge Clock or negedge Reset_n)
+		begin
+			if(!Reset_n)
+				Q <= 1'd0; // Reset The Timer
+			else
+				Q <= Q + 1'b1; // Incremant The Timer By 1
+		end
+
+endmodule
+
+
+///////////////////////////////
+
+// defparam -> Key Words That Used To Change Vlaue Of n
+
+counter eight_bit(Clock, Reset_n, Q);
+	defparam eight_bit.n = 8; // Change The Value Of n To 8
+
+
+
+
+

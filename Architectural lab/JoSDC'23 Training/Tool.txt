@@ -1,0 +1,2 @@
+1) EDA playground
+2) Quartus Prime Lite Edition
